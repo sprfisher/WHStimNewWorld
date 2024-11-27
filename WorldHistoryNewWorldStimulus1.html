@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World History Quiz: World History</title>
+    <style>
+        /* Styling for the quiz */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        #quiz-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #question-container {
+            margin-top: 20px;
+        }
+
+        .choice-button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .choice-button:hover {
+            background: #0056b3;
+        }
+
+        #feedback {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 5px solid #ccc;
+        }
+
+        #next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #next-button:disabled {
+            background: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>World History Quiz: New World STIMULUS1 Quiz</h1>
+        <div id="question-container"></div>
+        <button id="next-button">Next Question</button>
+        <div id="feedback"></div>
+    </div>
+    <script>
+        // JavaScript for quiz functionality
+        const questions = [
+{
+    question: "Excerpt from a letter by King Ferdinand and Queen Isabella to Christopher Columbus (1492): \n\n'You are hereby authorized to search for islands and mainlands in the western seas, and to take possession of these territories in the name of Spain.'\n\nWhat does this excerpt reveal about the Spanish monarchy's motivations?",
+    choices: [
+        "To establish alliances with indigenous peoples",
+        "To expand Spanish territory and influence",
+        "To encourage peaceful coexistence with natives",
+        "To advance scientific knowledge exclusively"
+    ],
+    correctAnswer: 1,
+    explanation: "The letter highlights Spain's goal of territorial expansion and asserting control over newly discovered lands."
+},
+{
+    question: "Excerpt from the Florentine Codex, written by Aztec priests (1579): \n\n'And when they had laid waste to everything and killed everyone, they left nothing standing...the conquerors came for gold and other riches.'\n\nWhat perspective does this account provide on the arrival of Europeans?",
+    choices: [
+        "It emphasizes the cultural exchange between Europeans and indigenous peoples",
+        "It criticizes the violence and greed of the conquistadors",
+        "It praises the technological advancements brought by the Europeans",
+        "It celebrates the religious conversions of native populations"
+    ],
+    correctAnswer: 1,
+    explanation: "The Florentine Codex describes the conquest as violent and driven by the pursuit of wealth."
+},
+{
+    question: "Excerpt from Christopher Columbus’s Journal (1492): \n\n'They are well-built people of handsome structure; they would make fine servants...with fifty men we could subjugate them all.'\n\nWhat does this excerpt reveal about Columbus's view of indigenous peoples?",
+    choices: [
+        "He saw them as potential trading partners",
+        "He viewed them as a labor source to exploit",
+        "He sought to establish peaceful coexistence",
+        "He admired their technological achievements"
+    ],
+    correctAnswer: 1,
+    explanation: "Columbus’s journal reflects his perception of indigenous peoples as a labor resource to be subjugated."
+},
+{
+    question: "Excerpt from Pope Alexander VI’s Papal Bull Inter Caetera (1493): \n\n'We grant to you and your heirs full power and authority to subdue and convert the inhabitants of these lands.'\n\nWhat role did the Catholic Church play in European exploration?",
+    choices: [
+        "It opposed colonization",
+        "It endorsed and encouraged the conversion of indigenous peoples",
+        "It advocated for indigenous rights",
+        "It avoided involvement in territorial disputes"
+    ],
+    correctAnswer: 1,
+    explanation: "The Catholic Church supported colonization and promoted the conversion of indigenous peoples to Christianity."
+},
+{
+    question: "Excerpt from a Native American oral tradition (pre-Columbian): \n\n'We believe that the land is shared among all living things, and that we are its stewards, not its owners.'\n\nHow does this perspective differ from European views on land ownership?",
+    choices: [
+        "It emphasizes the communal stewardship of land, contrasting with European individual ownership",
+        "It aligns with European notions of private property",
+        "It suggests a hierarchical system of land control",
+        "It mirrors the feudal system of Europe"
+    ],
+    correctAnswer: 0,
+    explanation: "Native American perspectives often emphasized communal stewardship of land, differing from European concepts of private ownership."
+},
+{
+    question: "Excerpt from the Requerimiento, a Spanish document (1513): \n\n'We protest that if you do not submit, we shall powerfully enter your country and shall make war against you...and we shall take away your goods and shall do all the harm we can.'\n\nWhat does this document reveal about Spanish attitudes toward indigenous peoples?",
+    choices: [
+        "They sought peaceful negotiations with natives",
+        "They used coercion and force to assert dominance",
+        "They respected indigenous sovereignty",
+        "They avoided military confrontations"
+    ],
+    correctAnswer: 1,
+    explanation: "The Requerimiento reflects the Spanish policy of using threats and force to subdue indigenous peoples."
+},
+{
+    question: "Excerpt from Amerigo Vespucci’s Letter to Lorenzo de Medici (1504): \n\n'In this New World, I have seen lands so fertile and rich with resources that they surpass those of our Europe.'\n\nWhat does Vespucci's account emphasize about the Americas?",
+    choices: [
+        "The scarcity of resources",
+        "The abundance of natural wealth and opportunity",
+        "The cultural superiority of Europeans",
+        "The peaceful coexistence between Europeans and natives"
+    ],
+    correctAnswer: 1,
+    explanation: "Vespucci’s account highlights the richness and potential of the Americas as a source of wealth and resources."
+},
+{
+    question: "Excerpt from a letter by Hernán Cortés to Charles V (1521): \n\n'I have taken great pains to serve your majesty by conquering these vast lands and converting their inhabitants to our holy faith.'\n\nWhat does this excerpt reveal about Cortés's actions in the Americas?",
+    choices: [
+        "He was motivated by scientific discovery",
+        "He sought personal wealth and power",
+        "He justified conquest through religious conversion",
+        "He avoided violence in his conquests"
+    ],
+    correctAnswer: 2,
+    explanation: "Cortés framed his actions as a religious mission to convert indigenous peoples, justifying his conquest."
+},
+{
+    question: "Excerpt from an Aztec account of the arrival of Cortés (1520): \n\n'And they said: “Look! There is a mountain in the water!” It was their ship, but we had never seen such a thing before.'\n\nWhat does this description reveal about indigenous perceptions of European technology?",
+    choices: [
+        "Indigenous peoples were unimpressed by European technology",
+        "They were unfamiliar with and astonished by European ships",
+        "They had similar technological advancements",
+        "They immediately recognized the ships as a threat"
+    ],
+    correctAnswer: 1,
+    explanation: "The Aztec description reflects their amazement at European ships, which were unlike anything they had encountered."
+},
+{
+    question: "Excerpt from the Spanish Crown’s New Laws (1542): \n\n'The said Indians are free and not to be enslaved, and we command that the practice of encomienda be abolished.'\n\nWhat do the New Laws reveal about changing attitudes toward indigenous peoples?",
+    choices: [
+        "A complete end to Spanish colonization",
+        "Efforts to improve conditions and reduce abuses",
+        "The preservation of the encomienda system",
+        "The abandonment of conversion efforts"
+    ],
+    correctAnswer: 1,
+    explanation: "The New Laws aimed to reduce abuses and protect indigenous peoples, although enforcement was inconsistent."
+},
+{
+    question: "Excerpt from a letter by Queen Elizabeth I to Francis Drake (1587): \n\n'We commend your actions in weakening the Spanish armada and securing wealth for the Crown.'\n\nWhat does this letter reveal about England’s goals during exploration?",
+    choices: [
+        "Establishing alliances with Spain",
+        "Challenging Spanish dominance and acquiring wealth",
+        "Avoiding conflicts with other European powers",
+        "Promoting religious conversion in the Americas"
+    ],
+    correctAnswer: 1,
+    explanation: "England sought to weaken Spanish power and increase its own wealth through privateering and exploration."
+}
+    ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionContainer = document.getElementById("question-container");
+        const feedbackContainer = document.getElementById("feedback");
+        const nextButton = document.getElementById("next-button");
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionContainer.innerHTML = `
+                <h2>${question.question}</h2>
+                ${question.choices.map((choice, index) => `
+                    <button class="choice-button" data-choice="${index}">${choice}</button>
+                `).join('')}
+            `;
+            feedbackContainer.innerHTML = "";
+            nextButton.style.display = "none";
+
+            const choiceButtons = document.querySelectorAll(".choice-button");
+            choiceButtons.forEach(button => {
+                button.addEventListener("click", (e) => {
+                    const userAnswer = parseInt(e.target.getAttribute("data-choice"));
+                    checkAnswer(userAnswer);
+                });
+            });
+        }
+
+        function checkAnswer(userAnswer) {
+            const question = questions[currentQuestion];
+            const isCorrect = userAnswer === question.correctAnswer;
+            feedbackContainer.innerHTML = `
+                <p>${isCorrect ? "Correct!" : "Incorrect."}</p>
+                <p>${isCorrect ? "" : `The correct answer is: ${question.choices[question.correctAnswer]}`}</p>
+                <p>${question.explanation}</p>
+            `;
+            if (isCorrect) score++;
+            nextButton.style.display = "block";
+
+            // Disable buttons after selecting an answer
+            const choiceButtons = document.querySelectorAll(".choice-button");
+            choiceButtons.forEach(button => button.disabled = true);
+        }
+
+        nextButton.addEventListener("click", () => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                questionContainer.innerHTML = `
+                    <h2>Quiz Complete!</h2>
+                    <p>Your Score: ${score} / ${questions.length}</p>
+                `;
+                nextButton.style.display = "none";
+            }
+        });
+
+        // Load the first question on startup
+        loadQuestion();
+    </script>
+</body>
+</html>
